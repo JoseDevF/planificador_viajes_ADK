@@ -1,0 +1,69 @@
+{
+    "name": "flight_agent",
+    "description": "Agent that provides flight recommendations based on destination, dates, budget, and origin.",
+    "input_schema": {
+        "type": "object",
+        "properties": {
+            "destination": {
+                "type": "string",
+                "description": "The travel destination city."
+            },
+            "start_date": {
+                "type": "string",
+                "format": "date",
+                "description": "Desired departure date."
+            },
+            "end_date": {
+                "type": "string",
+                "format": "date",
+                "description": "Desired return date (can be same as start_date for one-way)."
+            },
+            "budget": {
+                "type": "number",
+                "description": "Approximate budget for the flight in USD."
+            },
+            "origin": {
+                "type": "string",
+                "description": "The departure city."
+            }
+        },
+        "required": [
+            "destination",
+            "start_date",
+            "end_date",
+            "budget",
+            "origin"
+        ]
+    },
+    "output_schema": {
+        "type": "object",
+        "properties": {
+            "flights": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "airline": {
+                            "type": "string"
+                        },
+                        "price": {
+                            "type": "string"
+                        },
+                        "departure_time": {
+                            "type": "string"
+                        },
+                        "flight_details": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "airline",
+                        "price",
+                        "departure_time",
+                        "flight_details"
+                    ]
+                }
+            }
+        }
+    }
+}

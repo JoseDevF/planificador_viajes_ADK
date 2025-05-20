@@ -1,0 +1,64 @@
+{
+    "name": "stay_agent",
+    "description": "Agent that provides hotel or accommodation recommendations based on destination, dates, and budget.",
+    "input_schema": {
+        "type": "object",
+        "properties": {
+            "destination": {
+                "type": "string",
+                "description": "The travel destination city."
+            },
+            "start_date": {
+                "type": "string",
+                "format": "date",
+                "description": "Check-in date."
+            },
+            "end_date": {
+                "type": "string",
+                "format": "date",
+                "description": "Check-out date."
+            },
+            "budget": {
+                "type": "number",
+                "description": "Approximate overall travel budget in USD to help estimate nightly rate."
+            }
+        },
+        "required": [
+            "destination",
+            "start_date",
+            "end_date",
+            "budget"
+        ]
+    },
+    "output_schema": {
+        "type": "object",
+        "properties": {
+            "stays": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "hotel_name": {
+                            "type": "string"
+                        },
+                        "price_per_night": {
+                            "type": "string"
+                        },
+                        "location": {
+                            "type": "string"
+                        },
+                        "details": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "hotel_name",
+                        "price_per_night",
+                        "location",
+                        "details"
+                    ]
+                }
+            }
+        }
+    }
+}

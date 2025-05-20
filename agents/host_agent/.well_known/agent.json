@@ -1,0 +1,69 @@
+{
+    "name": "host_agent",
+    "description": "Main coordinating agent for travel planning. It calls specialized agents for flights, stays, and activities and aggregates their responses.",
+    "input_schema": {
+        "type": "object",
+        "properties": {
+            "destination": {
+                "type": "string",
+                "description": "The travel destination city."
+            },
+            "start_date": {
+                "type": "string",
+                "format": "date",
+                "description": "Start date of travel."
+            },
+            "end_date": {
+                "type": "string",
+                "format": "date",
+                "description": "End date of travel."
+            },
+            "budget": {
+                "type": "number",
+                "description": "Approximate overall travel budget in USD."
+            },
+            "origin": {
+                "type": "string",
+                "description": "The departure city for flights."
+            }
+        },
+        "required": [
+            "destination",
+            "start_date",
+            "end_date",
+            "budget",
+            "origin"
+        ]
+    },
+    "output_schema": {
+        "type": "object",
+        "properties": {
+            "flights": {
+                "type": [
+                    "array",
+                    "string"
+                ],
+                "description": "List of flight options or an error message."
+            },
+            "stay": {
+                "type": [
+                    "array",
+                    "string"
+                ],
+                "description": "List of stay options or an error message."
+            },
+            "activities": {
+                "type": [
+                    "array",
+                    "string"
+                ],
+                "description": "List of activity options or an error message."
+            }
+        },
+        "required": [
+            "flights",
+            "stay",
+            "activities"
+        ]
+    }
+}

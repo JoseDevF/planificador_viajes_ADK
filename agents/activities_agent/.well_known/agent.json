@@ -1,0 +1,64 @@
+{
+    "name": "activities_agent",
+    "description": "Agent that suggests engaging tourist activities at a destination based on user preferences.",
+    "input_schema": {
+        "type": "object",
+        "properties": {
+            "destination": {
+                "type": "string",
+                "description": "The travel destination."
+            },
+            "start_date": {
+                "type": "string",
+                "format": "date",
+                "description": "Start date of the travel."
+            },
+            "end_date": {
+                "type": "string",
+                "format": "date",
+                "description": "End date of the travel."
+            },
+            "budget": {
+                "type": "number",
+                "description": "Approximate budget for activities."
+            },
+            "origin": {
+                "type": "string",
+                "description": "Origin of travel (can be ignored by this agent if not relevant)."
+            }
+        },
+        "required": [
+            "destination",
+            "start_date",
+            "end_date",
+            "budget"
+        ]
+    },
+    "output_schema": {
+        "type": "object",
+        "properties": {
+            "activities": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "type": "string"
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "price_estimate": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "name",
+                        "description",
+                        "price_estimate"
+                    ]
+                }
+            }
+        }
+    }
+}
